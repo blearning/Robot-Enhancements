@@ -93,3 +93,6 @@ You can also lose marks for bad form. Some Examples of bad form include:
 * How to write your own `initialize` method
 * How to use `super` to call a parent class' `initialize` method
 * How to use inheritance to extend a class
+=======
+# Robot-Enhancements
+Robot Enhancements as a lighthouse lab assignment
