@@ -10,7 +10,7 @@ describe Robot do
 
     it "should introduce error when trying to heal a dead robot" do
       robot.should_receive(:health).and_return(0)
-      expect{ robot.heal(100) }.to raise_exception(StandardError)
+      expect{ robot.heal(100) }.to raise_exception(RobotAlreadyDeadError)
     end
 
     it "should be non error when healing a robot that has one health" do
@@ -23,7 +23,7 @@ describe Robot do
   describe "#attack!" do
 
     it "should be introduce error when trying to attack non robot object" do
-      expect{ robot.attack(pasma_canon) }.to raise_exception (StandardError)
+      expect{ robot.attack(pasma_canon) }.to raise_exception (UnattackableEnemy)
     end
 
     it "should be able to attack another robot" do

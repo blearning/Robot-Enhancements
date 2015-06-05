@@ -14,8 +14,8 @@ robot2 = Robot.new
 laser = Laser.new
 
 #tested: throws eception error of "YouAreDeadError"
-# robot.wound(100)
-# robot.heal(10)
+robot.wound(100)
+robot.heal(10)
 
 #tested: throws eception error of "InvalidTargetError"
 # robot.attack(robot2) #returns nil

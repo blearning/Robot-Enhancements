@@ -61,7 +61,7 @@ class Robot
 
   def heal!
     begin 
-      raise RobotAlreadyDeadError, "INVALID - ROBOT ALREADY DEAD ERROR: your health is at 0. You are dead. You cannot revive robot".red if health == 0
+      raise RobotAlreadyDeadError, "INVALID - ROBOT ALREADY DEAD ERROR: your health is at 0. You are dead. You cannot revive robot" if health == 0
     end
   end
 
@@ -72,8 +72,10 @@ class Robot
 
   def attack!(target)
     begin 
-      raise UnattackableEnemy, "INVALID - NOT ATTACKABLE: you can only attack robots".red unless target.is_a? Robot
+      raise UnattackableEnemy, "INVALID - NOT ATTACKABLE: you can only attack robots" unless target.is_a? Robot
     end
   end
 
 end
+
+
