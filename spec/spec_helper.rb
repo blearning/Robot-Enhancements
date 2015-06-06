@@ -19,5 +19,6 @@ safe_require 'box_of_bolts'
 safe_require 'laser'
 safe_require 'plasma_cannon'
 safe_require 'grenade'
+safe_require 'batteries'
 safe_require 'exceptions'
 

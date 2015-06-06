@@ -3,7 +3,9 @@ class Robot
     MAX_HEALTH = 100
     MIN_HEALTH = 0
 
-  attr_reader :position, :items, :health
+    @@all_robots = []
+
+  attr_reader :position, :items, :health, :shield_points
   attr_accessor :equipped_weapon
 
   def initialize
@@ -11,6 +13,8 @@ class Robot
     @items = []
     @health = MAX_HEALTH
     @equipped_weapon = nil
+    @shield_points = 50
+    @@all_robots << self
   end
 
   def move_left
@@ -48,9 +52,19 @@ class Robot
   end
 
   def wound(damage)
+    @shield_points -= damage if (shield_points > 0)
+    if shield_points < 0
+      @health -= shield_points.abs
+      @shield_points = 0
+    else
     @health -= damage
+    end
     @health = 0 if health <= MIN_HEALTH
     #@health = (@health, MIN_HEALTH).max
+  end
+
+  def shield_recharge(charge)
+    @shield_points += charge
   end
 
   def heal(hp)
@@ -95,6 +109,37 @@ class Robot
     return false
   end
 
+  def scan
+
+    x_position_range = (position[0]-1..position[0]+1)
+    y_position_range = (position[1]-1..position[1]+1)
+
+    other_robots = Robot.all_robots.select { |robot| robot != self }
+
+    other_robots.each do |robot|
+      if (x_position_range.include?(robot.position[0]) && y_position_range.include?(robot.position[1]))
+      end
+    end
+
+
+  end
+
+
+
+  class << self 
+
+    def all_robots
+      @@all_robots
+    end
+
+    def robot_list
+      i = 0
+      @@all_robots.each do |robot|
+        i += 1
+        puts "Robot ##{i}) #{robot.position}"
+      end
+    end
+
+  end
+
 end
-
-
